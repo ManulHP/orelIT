@@ -1,7 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.orel_it">
+    <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="orel_it"
+        android:label="Orel IT"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

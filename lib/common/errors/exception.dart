@@ -17,7 +17,7 @@ class ServerException implements Exception {
         errorMessage = "Request Cancel";
         unexpectedError = false;
         break;
-      case DioErrorType.connectionTimeout:
+      case DioErrorType.connectTimeout:
         errorMessage = "Timeout";
         unexpectedError = false;
         break;
@@ -29,11 +29,11 @@ class ServerException implements Exception {
         errorMessage = "Send Timeout";
         unexpectedError = false;
         break;
-      case DioErrorType.badResponse:
+      case DioErrorType.response:
         errorMessage = _handleStatusCode(dioError.response);
         break;
-      case DioErrorType.unknown:
-        if (dioError.message!.contains('SocketException')) {
+      case DioErrorType.other:
+        if (dioError.message.contains('SocketException')) {
           errorMessage = "Error";
           unexpectedError = false;
           break;

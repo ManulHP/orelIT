@@ -44,10 +44,10 @@ class RequestData {
   final Map<String, dynamic>? headers;
 
   /// Timeout in milliseconds for sending data.
-  final Duration? sendTimeout;
+  final int? sendTimeout;
 
   ///  Timeout in milliseconds for receiving data.
-  final Duration? receiveTimeout;
+  final int? receiveTimeout;
 
   /// The request Content-Type. The default value is [ContentType.json].
   final String? contentType;

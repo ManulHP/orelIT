@@ -40,10 +40,11 @@ class NewsViews extends StatelessWidget {
             children: [
               Container(
                 width: 225.w,
-                child: AutoSizeText(
+                child: Text(
                   title ?? "",
                   style: kFont22(context),
                   maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
               SizedBox(height: 10.h,),
