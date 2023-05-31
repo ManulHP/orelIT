@@ -5,14 +5,15 @@ import '../../../util/styles.dart';
 class BottomIcons extends StatelessWidget {
   final IconData? icon;
   final String title;
-  const BottomIcons({Key? key, required this.title, this.icon}) : super(key: key);
+  final Color color;
+  const BottomIcons({Key? key, required this.title, this.icon, required this.color}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Icon(icon),
-        Text(title, style: kPoppinsFont12(context),)
+        Icon(icon, color: color),
+        Text(title, style: kPoppinsFont12(context, color: color),)
       ],
     );
   }

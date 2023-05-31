@@ -44,16 +44,16 @@ class NewsViews extends StatelessWidget {
                 width: 225.w,
                 child: AutoSizeText(
                   title ?? "",
-                  style: kPoppinsFont22Black(context),
+                  style: kPoppinsFont22(context),
                   maxLines: 2,
                 ),
               ),
               SizedBox(height: 10.h,),
               Row(
                 children: [
-                  Icon(Icons.access_time, color: kColorYellow, size: 15.r,),
-                  SizedBox(width: 2.w,),
-                  Text("author - ${author}", style: kPoppinsFont14(context)),
+                  Icon(Icons.access_time, color: kColorBlack.withOpacity(0.5), size: 20.r,),
+                  SizedBox(width: 5.w,),
+                  Text("Author - $author", style: kPoppinsFont14(context)),
                 ],
               )
             ],
