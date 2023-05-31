@@ -1,10 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/cupertino.dart';
-
 import 'package:orel_it/common/errors/failure.dart';
-
 import 'package:orel_it/feature/domain/entity/newsEntity.dart';
-
 import '../../../common/errors/exception.dart';
 import '../../../common/network/internet_connectivity.dart';
 import '../../domain/repository/newRepository.dart';

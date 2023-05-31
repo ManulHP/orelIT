@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:orel_it/util/injection.dart';
-
 import 'common/loader/config.dart';
 import 'common/observer/observer.dart';
 import 'feature/presentation/homescreen.dart';

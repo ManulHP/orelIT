@@ -1,5 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
@@ -9,7 +7,6 @@ import 'package:orel_it/common/extension/capitalist.dart';
 import 'package:orel_it/feature/presentation/reusable/bottomIcon.dart';
 import 'package:orel_it/feature/presentation/reusable/newView.dart';
 import 'package:orel_it/feature/presentation/reusable/newViewShimmer.dart';
-
 import '../../util/appColors.dart';
 import '../../util/injection.dart';
 import '../../util/styles.dart';
@@ -79,6 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           catergoryId =
                               Catergory.science.toString().split('.').last;
                         });
+                        // shows the active button
                         onTabTapped(0);
                       },
                       child: BottomIcons(
@@ -96,6 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           catergoryId =
                               Catergory.business.toString().split('.').last;
                         });
+                        // shows the active button
                         onTabTapped(1);
                       },
                       child: BottomIcons(
@@ -116,6 +115,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           catergoryId =
                               Catergory.technology.toString().split('.').last;
                         });
+                        // shows the active button
                         onTabTapped(2);
                       },
                       child: BottomIcons(
@@ -132,10 +132,8 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             Padding(
               padding: EdgeInsets.only(top: 50.h),
-              child: Container(
-                child: Center(
-                  child: Text("News", style: kFont22(context, color: kColorWhite),),
-                ),
+              child: Center(
+                child: Text("News", style: kFont22(context, color: kColorWhite),),
               ),
             ),
             SizedBox(
