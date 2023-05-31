@@ -1,8 +1,7 @@
 import 'dart:convert';
 import '../../domain/entity/dataEntity.dart';
 import 'package:equatable/equatable.dart';
-
-import '../../domain/entity/newsArticle.dart';
+import '../../domain/entity/newsEntity.dart';
 
 NewsModel newsModelFromJson(String str) =>
     NewsModel.fromJson(json.decode(str));
@@ -39,7 +38,6 @@ class NewsModel extends Equatable {
   }
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
         category,
         data,
@@ -117,7 +115,6 @@ class DataModel extends Equatable {
   }
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
         author,
         content,

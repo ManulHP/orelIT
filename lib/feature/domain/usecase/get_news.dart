@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import '../../../common/errors/failure.dart';
 import '../../../common/usecase/usecase.dart';
-import '../entity/newsArticle.dart';
+import '../entity/newsEntity.dart';
 import '../repository/newRepository.dart';
 
 class GetNewsUseCase implements UseCase<NewEntity, String> {
@@ -12,7 +12,7 @@ class GetNewsUseCase implements UseCase<NewEntity, String> {
   });
 
   @override
-  Future<Either<Failure, NewEntity>> call(String catergory) async {
-    return await repository.getNews(catergory);
+  Future<Either<Failure, NewEntity>> call(String category) async {
+    return await repository.getNews(category);
   }
 }

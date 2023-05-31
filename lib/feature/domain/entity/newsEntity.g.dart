@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'newsArticle.dart';
+part of 'newsEntity.dart';
 
 // **************************************************************************
 // CopyWithGenerator

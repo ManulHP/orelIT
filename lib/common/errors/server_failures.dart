@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-
 import 'dart:convert';
 
 String serverErrorDataToJson(ServerErrorData data) => json.encode(data.toJson());

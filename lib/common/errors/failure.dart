@@ -23,9 +23,3 @@ class NoConnectionFailure extends Failure {
   @override
   List<Object?> get props => [];
 }
-
-/// Use to return a [NoPermissionFailure] when permission not granted
-class NoPermissionFailure extends Failure {
-  @override
-  List<Object?> get props => [];
-}

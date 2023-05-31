@@ -1,12 +1,11 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
 import '../../../common/errors/exception.dart';
 import '../../../common/network/dioClient.dart';
 import '../../../util/endpoints.dart';
 import '../model/model.dart';
 
 abstract class NewsRemoteDataSource {
-  Future<NewsModel> getNewsData(String catergory);
+  Future<NewsModel> getNewsData(String category);
 }
 
 class NewsRemoteDataSourceImpl implements NewsRemoteDataSource {
@@ -17,9 +16,9 @@ class NewsRemoteDataSourceImpl implements NewsRemoteDataSource {
   });
 
   @override
-  Future<NewsModel> getNewsData(String catergory) async {
+  Future<NewsModel> getNewsData(String category) async {
     try {
-      Response response = await dioClient.public.get(ApiEndpoints.category+catergory);
+      Response response = await dioClient.public.get(ApiEndpoints.category+category);
       return newsModelFromJson(response.data);
     } on DioError catch (err) {
       throw ServerException.fromDioError(err);

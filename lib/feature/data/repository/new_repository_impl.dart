@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 
 import 'package:orel_it/common/errors/failure.dart';
 
-import 'package:orel_it/feature/domain/entity/newsArticle.dart';
+import 'package:orel_it/feature/domain/entity/newsEntity.dart';
 
 import '../../../common/errors/exception.dart';
 import '../../../common/network/internet_connectivity.dart';
@@ -20,19 +20,17 @@ class NewsRepositoryImpl implements NewsRepository {
   });
 
   @override
-  Future<Either<Failure, NewEntity>> getNews(String catergory) async {
+  Future<Either<Failure, NewEntity>> getNews(String category) async {
     if (await networkInfo.isConnectedToInternet) {
       try {
-        final news = await remoteDataSource.getNewsData(catergory);
+        final news = await remoteDataSource.getNewsData(category);
         return Right(news.toEntity());
       } on ServerException catch (serverException) {
-        debugPrint("news: ${serverException.data?.requestData.url}");
-        debugPrint("news: ${serverException.data?.responseData.data}");
+        debugPrint("#178 news: ${serverException.data?.requestData.url}");
+        debugPrint("#166 news: ${serverException.data?.responseData.data}");
         return Left(ServerFailure(message: serverException.errorMessage));
-
       }
     } else {
-      debugPrint("failed #7845");
       return const Left(ServerFailure(message: "No Internet Connection"));
     }
   }

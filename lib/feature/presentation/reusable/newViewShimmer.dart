@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../common/shimmer/shimmer.dart';
 import '../../../util/appColors.dart';
 

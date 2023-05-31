@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
 import 'dataEntity.dart';
 
-part 'newsArticle.g.dart';
+part 'newsEntity.g.dart';
 
 @CopyWith()
 class NewEntity extends Equatable {

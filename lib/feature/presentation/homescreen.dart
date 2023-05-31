@@ -134,7 +134,7 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: EdgeInsets.only(top: 50.h),
               child: Container(
                 child: Center(
-                  child: Text("News", style: kPoppinsFont22(context, color: kColorWhite),),
+                  child: Text("News", style: kFont22(context, color: kColorWhite),),
                 ),
               ),
             ),
@@ -157,12 +157,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(catergoryId.toCapitalized(),
-                            style: kPoppinsFont22(context)),
+                            style: kFont22(context)),
                         SizedBox(
                           height: 5.h,
                         ),
                         Text("Here is your $catergoryId news",
-                            style: kPoppinsFont14(context)),
+                            style: kFont14(context)),
                         SizedBox(
                           height: 25.h,
                         ),
@@ -229,9 +229,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                         ),
                                       )
                                     : Center(
-                                        child: Text("Error while fetching data",
+                                        child: Text("${state.errorMessage}",
                                             style:
-                                            kPoppinsFont22(context)),
+                                            kFont22(context)),
                                       );
                           }),
                         )

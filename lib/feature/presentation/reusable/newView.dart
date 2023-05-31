@@ -2,7 +2,6 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../util/appColors.dart';
 import '../../../util/styles.dart';
 
@@ -30,7 +29,6 @@ class NewsViews extends StatelessWidget {
               child: CachedNetworkImage(
                 imageUrl: url ?? "",
                 placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
-                errorWidget: (context, url, error) => Image.network('https://staging.smaboo.com/img/system_images/default-profile.png'),
                 fit: BoxFit.fitWidth,
               ),
             ),
@@ -44,7 +42,7 @@ class NewsViews extends StatelessWidget {
                 width: 225.w,
                 child: AutoSizeText(
                   title ?? "",
-                  style: kPoppinsFont22(context),
+                  style: kFont22(context),
                   maxLines: 2,
                 ),
               ),
@@ -53,7 +51,7 @@ class NewsViews extends StatelessWidget {
                 children: [
                   Icon(Icons.access_time, color: kColorBlack.withOpacity(0.5), size: 20.r,),
                   SizedBox(width: 5.w,),
-                  Text("Author - $author", style: kPoppinsFont14(context)),
+                  Text("Author - $author", style: kFont14(context)),
                 ],
               )
             ],

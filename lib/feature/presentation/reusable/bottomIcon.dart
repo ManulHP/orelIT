@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../util/styles.dart';
 
 class BottomIcons extends StatelessWidget {
@@ -13,7 +12,7 @@ class BottomIcons extends StatelessWidget {
     return Column(
       children: [
         Icon(icon, color: color),
-        Text(title, style: kPoppinsFont12(context, color: color),)
+        Text(title, style: kFont12(context, color: color),)
       ],
     );
   }

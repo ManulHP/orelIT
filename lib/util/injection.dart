@@ -13,9 +13,13 @@ import '../feature/presentation/bloc/news_bloc.dart';
 final sl = GetIt.instance;
 
 Future<void> setupLocators() async {
+  // Dio
   sl.registerFactory<Dio>(() => Dio());
+  // Dio client
   sl.registerFactory<DioClient>(() => DioClient(public: sl<Dio>()));
+  // Network info
   sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(connectionChecker: sl()));
+  // Internet connection checker
   sl.registerLazySingleton<InternetConnectionChecker>(() => InternetConnectionChecker());
 
   // Blocs
