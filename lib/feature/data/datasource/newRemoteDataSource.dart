@@ -19,7 +19,7 @@ class NewsRemoteDataSourceImpl implements NewsRemoteDataSource {
   @override
   Future<NewsModel> getNewsData(String catergory) async {
     try {
-      Response response = await dioClient.public.get(ApiEndpoints.baseUrl+catergory);
+      Response response = await dioClient.public.get(ApiEndpoints.category+catergory);
       return newsModelFromJson(response.data);
     } on DioError catch (err) {
       throw ServerException.fromDioError(err);

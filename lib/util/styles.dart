@@ -23,3 +23,10 @@ TextStyle kPoppinsFont22Black(BuildContext context) => TextStyle(
     fontFamily: "Poppins",
     fontStyle: FontStyle.normal,
     fontSize: 22.sp);
+
+TextStyle kPoppinsFont12(BuildContext context) => TextStyle(
+    color: kColorBlack,
+    fontWeight: FontWeight.w500,
+    fontFamily: "Poppins",
+    fontStyle: FontStyle.normal,
+    fontSize: 12.sp);

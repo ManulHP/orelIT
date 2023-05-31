@@ -3,12 +3,17 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:orel_it/common/extension/capitalist.dart';
+import 'package:orel_it/feature/presentation/reusable/bottomIcon.dart';
 import 'package:orel_it/feature/presentation/reusable/newView.dart';
+import 'package:orel_it/feature/presentation/reusable/newViewShimmer.dart';
 
 import '../../util/appColors.dart';
 import '../../util/injection.dart';
 import '../../util/styles.dart';
 import 'bloc/news_bloc.dart';
+
+enum Catergory { business, technology, science }
 
 class HomeScreenWrapper extends StatelessWidget {
   const HomeScreenWrapper({Key? key}) : super(key: key);
@@ -34,9 +39,11 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
 
+  String catergoryId = Catergory.science.toString().split('.').last;
+
   @override
   void initState() {
-    context.read<NewsBloc>().add(const InitialNewsEvent(id: "science"));
+    context.read<NewsBloc>().add(InitialNewsEvent(id: Catergory.science.toString().split('.').last));
     super.initState();
   }
 
@@ -44,6 +51,55 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kColorYellow,
+      bottomNavigationBar: BottomAppBar (
+        child: Container(
+          height: 55.h,
+          child: Padding(
+            padding: EdgeInsets.only(top: 10.h),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                GestureDetector(
+                  onTap: (){
+                    context.read<NewsBloc>().add(InitialNewsEvent(id: Catergory.science.toString().split('.').last));
+                    setState(() {
+                      catergoryId = Catergory.science.toString().split('.').last;
+                    });
+                  },
+                  child: const BottomIcons(
+                    title: "Home",
+                    icon: Icons.home,
+                  )
+                ),
+                GestureDetector(
+                  onTap: (){
+                    context.read<NewsBloc>().add(InitialNewsEvent(id: Catergory.business.toString().split('.').last));
+                    setState(() {
+                      catergoryId = Catergory.business.toString().split('.').last;
+                    });
+                  },
+                  child:  const BottomIcons(
+                    title: "Business",
+                    icon: Icons.business,
+                  )
+                ),
+                GestureDetector(
+                    onTap: (){
+                      context.read<NewsBloc>().add(InitialNewsEvent(id: Catergory.technology.toString().split('.').last));
+                      setState(() {
+                        catergoryId = Catergory.technology.toString().split('.').last;
+                      });
+                    },
+                  child:  const BottomIcons(
+                    title: "Technology",
+                    icon: Icons.business,
+                  )
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
       body: Column(
         children: [
           Padding(
@@ -68,22 +124,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Science", style: kPoppinsFont22Black(context)),
+                    Text(catergoryId.toCapitalized(), style: kPoppinsFont22Black(context)),
                     SizedBox(height: 5.h,),
-                    Text("Here is your science news", style: kPoppinsFont14(context)),
+                    Text("Here is your $catergoryId news", style: kPoppinsFont14(context)),
                     SizedBox(height: 5.h,),
-                    // Expanded(
-                    //   child: ListView.builder(
-                    //     itemCount: 15,
-                    //     padding: EdgeInsets.zero,
-                    //     itemBuilder: (BuildContext context, int index){
-                    //       return Padding(
-                    //         padding: EdgeInsets.only(top: 25.h),
-                    //         child: ,
-                    //       );
-                    //     },
-                    //   ),
-                    // ),
                     Expanded(
                       child: BlocBuilder<NewsBloc, NewsState>(
                         buildWhen: (prev, current) {
@@ -94,7 +138,20 @@ class _HomeScreenState extends State<HomeScreen> {
                           }
                         },
                         builder: (context, state){
-                          return state.status == NewsStatus.initial || state.status == NewsStatus.loading ? Container() : 
+                          return state.status == NewsStatus.initial || state.status == NewsStatus.loading ?
+                          MediaQuery.removePadding(
+                            context: context,
+                            child: ListView.builder(
+                              itemCount: 5,
+                              padding: EdgeInsets.zero,
+                              itemBuilder: (BuildContext context, int index){
+                                return Padding(
+                                  padding: EdgeInsets.only(top: 25.h),
+                                  child: const NewViewShimmer()
+                                );
+                              },
+                            ),
+                          ) : state.status == NewsStatus.success ?
                               MediaQuery.removePadding(
                                 context: context,
                                 child: ListView.builder(
@@ -108,9 +165,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                         author: state.newsEntity?.data?[index].author ?? "",
                                         url: state.newsEntity?.data?[index].imageUrl ?? "",
                                       ),
+
                                     );
                                   },
                                 ),
+                              ) : Center(
+                                child: Text("Error while fetching data", style: kPoppinsFont22Black(context)),
                               );
                         }
                       ),
