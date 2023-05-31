@@ -29,7 +29,7 @@ class NewsViews extends StatelessWidget {
               child: CachedNetworkImage(
                 imageUrl: url ?? "",
                 placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
-                fit: BoxFit.fitWidth,
+                fit: BoxFit.cover,
               ),
             ),
           ),
