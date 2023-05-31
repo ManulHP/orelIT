@@ -63,12 +63,6 @@ class ServerException implements Exception {
       case 404:
         unexpectedError = true;
         return "Error code 404";
-      case 405:
-        unexpectedError = true;
-        return "Error code 405";
-      case 415:
-        unexpectedError = true;
-        return "Error code 415";
       default:
         unexpectedError = true;
         return "Error code ${statusCode.toString()}";
@@ -80,6 +74,3 @@ class ServerException implements Exception {
     return 'ServerException{errorMessage: $errorMessage, unexpectedError: $unexpectedError, data: ${data.toString()}}';
   }
 }
-
-/// Use to throw exception when the user not grant device permissions
-class NoPermission implements Exception {}
