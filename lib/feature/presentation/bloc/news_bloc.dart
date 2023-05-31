@@ -22,10 +22,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
   }
 
   Future<FutureOr<void>> _newEvent(InitialNewsEvent event, Emitter<NewsState> emit) async {
-
-    Either<Failure, NewEntity> result = await getNewsUseCase(NoParams());
-    debugPrint("#result: $result");
-
+    Either<Failure, NewEntity> result = await getNewsUseCase(event.id);
     result.fold((failure) {
       String message = '';
       if (failure is ServerFailure) {
@@ -37,5 +34,6 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     },
             (data) => emit(NewsState(status: NewsStatus.success, newsEntity: data)));
   }
+
 
 }

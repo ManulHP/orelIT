@@ -5,8 +5,9 @@ abstract class NewsEvent extends Equatable {
 }
 
 class InitialNewsEvent extends NewsEvent {
-  const InitialNewsEvent();
+  final String id;
+  const InitialNewsEvent({required this.id});
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [id];
 }

@@ -36,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
-    context.read<NewsBloc>().add(const InitialNewsEvent());
+    context.read<NewsBloc>().add(const InitialNewsEvent(id: "science"));
     super.initState();
   }
 

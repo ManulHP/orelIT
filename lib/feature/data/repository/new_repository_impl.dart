@@ -20,11 +20,10 @@ class NewsRepositoryImpl implements NewsRepository {
   });
 
   @override
-  Future<Either<Failure, NewEntity>> getNews() async {
+  Future<Either<Failure, NewEntity>> getNews(String catergory) async {
     if (await networkInfo.isConnectedToInternet) {
       try {
-        final news = await remoteDataSource.getNewsData();
-        // localDataSource.cacheNotifications(notifications);
+        final news = await remoteDataSource.getNewsData(catergory);
         return Right(news.toEntity());
       } on ServerException catch (serverException) {
         debugPrint("news: ${serverException.data?.requestData.url}");
